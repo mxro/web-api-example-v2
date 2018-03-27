@@ -28,15 +28,15 @@ public class TestApplicationMetadataService extends AbstractServerTest {
 		JsonObject root = JSONUtils.parse(response.getBody());
 		
 		// check that version number supplied
-		Assert.assertTrue(root.get("version").getAsString().contains("."));
+		Assert.assertTrue("Version invlid", root.get("version").getAsString().contains("."));
 		
 		// check that description supplied
-		Assert.assertTrue(root.get("description").getAsString().length() > 5);
+		Assert.assertTrue("Descriptin not provided", root.get("description").getAsString().length() > 5);
 			
 		
 		
 		// check that commit hash is supplied
-		Assert.assertEquals(16, root.get("lastcommit").getAsString().length());
+		Assert.assertTrue("Commit info not provided", root.get("lastcommit").getAsString().length() > 10);
 		
 		
 
