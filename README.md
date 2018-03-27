@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/mxro/web-api-example.svg?branch=master)](https://travis-ci.org/mxro/web-api-example)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/mxro/web-api-example/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/mxro/web-api-example?targetFile=pom.xml)
-Copy
 
 # web-api-example
 
