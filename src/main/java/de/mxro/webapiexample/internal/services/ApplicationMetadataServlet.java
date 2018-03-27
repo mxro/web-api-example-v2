@@ -43,9 +43,16 @@ public class ApplicationMetadataServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 
-		Properties prop = new Properties();
+		readPropertiesAndRenderResponse();
 
-		try (InputStream input = new FileInputStream("versioninfo.txt")) {
+	}
+
+	private void readPropertiesAndRenderResponse() {
+		Properties prop = new Properties();
+		
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		
+		try (InputStream input = loader.getResourceAsStream("versioninfo.txt")) {
 
 			// load a properties file
 			prop.load(input);
@@ -53,7 +60,7 @@ public class ApplicationMetadataServlet extends HttpServlet {
 			JSONObject jsonObject = JSON.create();
 			jsonObject.add("version", prop.getProperty("version"));
 			jsonObject.add("description", prop.getProperty("description"));
-			jsonObject.add("buildnumber", prop.getProperty("buildnumber"));
+			jsonObject.add("lastcommit", prop.getProperty("lastcommit"));
 			
 			cachedResponse = jsonObject.render();
 			
@@ -63,7 +70,6 @@ public class ApplicationMetadataServlet extends HttpServlet {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 
 }

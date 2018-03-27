@@ -14,9 +14,14 @@ import de.mxro.webapiexample.tests.utils.PortUtils;
  *
  */
 public abstract class AbstractServerTest {
-
-	protected WebApiServer server;
+	
+	/**
+	 * Root URL for accessing the services provided by this server
+	 */
 	protected String serverUrl;
+	
+	private WebApiServer server;
+	
 	
 	@Before
 	public void setUp() {

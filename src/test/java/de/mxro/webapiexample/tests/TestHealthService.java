@@ -25,7 +25,7 @@ public class TestHealthService extends AbstractServerTest{
 		
 		// parse response using GSON to assert it is valid JSON and has the correct content
 		JsonObject root = JSONUtils.parse(response.getBody());
-	    Assert.assertTrue("Invalid response", root.get("uptime").getAsInt() > 0);
+	    Assert.assertTrue("Invalid response", root.get("running").getAsBoolean() == true);
 	}
 	
 	@Test

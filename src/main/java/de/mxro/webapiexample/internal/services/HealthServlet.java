@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>This service can be used to check if the server can be reached.
- * <p>Upon a GET request, it will return a JSON document which reports the time in ms since the server was started.
+ * <p>Upon a GET request, it will return a JSON document which reports the status of the server.
+ * <p>Upon a HEAD request, it will return the status 200.
  * 
  * @author Max
  *
@@ -35,10 +36,11 @@ public class HealthServlet extends HttpServlet {
 		
 		response.setContentType("application/json");
 		response.setStatus(HttpServletResponse.SC_OK);
-		response.getWriter().println("{ \"uptime\": "+(System.currentTimeMillis() - serverStartedAt)+"}");
+		response.getWriter().println("{ \"running\": true}");
 		
 	}
 
+	
 	
 	@Override
 	public void init() throws ServletException {
