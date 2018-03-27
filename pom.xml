@@ -1,0 +1,180 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.mxro.webapiexample</groupId>
+	<artifactId>web-api-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Provides an example for a simple REST API implemented in Jetty.</description>
+	<url>https://github.com/mxro/web-api-example</url>
+
+	<dependencies>
+		<!-- Jetty used as HTTP server -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>9.4.9.v20180320</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>9.4.9.v20180320</version>
+		</dependency>
+
+		<!-- Used for server JSON rendering -->
+		<dependency>
+			<groupId>org.javadelight</groupId>
+			<artifactId>delight-json</artifactId>
+			<version>0.0.5</version>
+		</dependency>
+
+		<!-- Used for building test HTTP requests -->
+		<dependency>
+			<groupId>com.mashape.unirest</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>1.4.9</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Used for parsing JSON responses received from server -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<failOnError>false</failOnError>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<!-- This plugin is required to inject the git commit id into the versioninfo 
+				properties file -->
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<commitIdGenerationMode>flat</commitIdGenerationMode>
+					<gitDescribe>
+						<skip>true</skip>
+					</gitDescribe>
+				</configuration>
+
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/versioninfo.txt</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/versioninfo.txt</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+
+	<developers>
+		<developer>
+			<id>mxro</id>
+			<name>Max Rohde</name>
+			<email>noemail@mxro.de</email>
+			<url>http://www.mxro.de/</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+10</timezone>
+			<organization>Max Rohde</organization>
+			<organizationUrl>https://www.mxro.de</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:mxro/web-api-example.git</connection>
+		<url>https://github.com/mxro/web-api-example</url>
+		<developerConnection>scm:git:git@github.com:mxro/web-api-example.git
+		</developerConnection>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+		<license>
+			<name>GPL</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+		</license>
+	</licenses>
+
+</project>
