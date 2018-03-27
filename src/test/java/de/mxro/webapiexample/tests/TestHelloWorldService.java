@@ -27,7 +27,7 @@ public class TestHelloWorldService extends AbstractServerTest {
 		JsonObject root = JSONUtils.parse(response.getBody());
 	    Assert.assertEquals("Invalid response", 42, root.get("theAnswer").getAsInt());
 	    
-
+	    
 	}
 
 	

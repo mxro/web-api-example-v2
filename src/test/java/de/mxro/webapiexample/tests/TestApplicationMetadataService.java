@@ -23,7 +23,7 @@ public class TestApplicationMetadataService extends AbstractServerTest {
 
 		// check content type
 		Assert.assertEquals("Wrong content type", "application/json", response.getHeaders().getFirst("Content-Type"));
-
+			
 		// parse response using GSON to assert it is valid JSON and has the correct content
 		JsonObject root = JSONUtils.parse(response.getBody());
 		
