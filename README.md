@@ -1,10 +1,14 @@
-[![Build Status](https://travis-ci.org/mxro/web-api-example-v2.svg?branch=master)](https://travis-ci.org/mxro/web-api-example)
+[![Build Status](https://travis-ci.org/mxro/web-api-example-v2.svg?branch=master)](https://travis-ci.org/mxro/web-api-example-v2)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/mxro/web-api-example-v2/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/mxro/web-api-example?targetFile=pom.xml)
+[![Known Vulnerabilities](https://snyk.io/test/github/mxro/web-api-example-v2/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/mxro/web-api-example-v2?targetFile=pom.xml)
 
 # web-api-example-v2
 
 Provides an example for a simple server providing a REST API, implemented in Jetty.
+
+This server can be deployed as stand-alone Java application or as a WAR to a Tomcat/Jetty server.
+
+It is continuously deployed to [web-api-example-v2.us-east-1.elasticbeanstalk.com](http://web-api-example-v2.us-east-1.elasticbeanstalk.com/)
 
 ## About
 
@@ -133,7 +137,7 @@ repository and then reference it as follows:
 ```
 <dependency>
 	<groupId>de.mxro.webapiexample</groupId>
-	<artifactId>web-api-example</artifactId>
+	<artifactId>web-api-example-v2</artifactId>
 	<version>[insert latest version here]</version>
 </dependency>
 ```
