@@ -127,7 +127,25 @@ server.stop();
 
 ## Deployment
 
+### Standalone JAR
+
 To deploy this project, you will only require the distribution JAR file. It can be deployed to any server that has JRE 1.8+ installed.
+
+### WAR
+
+Building the project (Maven phase package) will assemble a WAR file. You can upload this WAR file to a Java Application server.
+
+### Elastic Beanstalk
+
+This project can easily be deployed to AWS Elastic Beanstalk.
+
+Simply configure your Maven settings file as described in step 1 and 2 in [this blog post](https://maxrohde.com/2018/04/01/upload-elastic-beanstalk-application-using-maven/).
+
+When the correct credentials have been supplied, you can trigger a deployment to Elastic Beanstalk with the following command:
+
+```
+mvn clean install beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
+```
 
 ## Dependency
 
