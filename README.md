@@ -8,8 +8,6 @@ Provides an example for a simple server providing a REST API, implemented in Jet
 
 This server can be deployed as stand-alone Java application or as a WAR to a Tomcat/Jetty server.
 
-It is continuously deployed to [web-api-example-v2.us-east-1.elasticbeanstalk.com](http://web-api-example-v2.us-east-1.elasticbeanstalk.com/)
-
 ## About
 
 This project provides a simple, Java-based web server. This web server can be started on any system with an installed JRE (version 1.8+) on a port specified by the user.
