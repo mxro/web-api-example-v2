@@ -5,7 +5,7 @@
 
 	<groupId>de.mxro.webapiexample</groupId>
 	<artifactId>web-api-example-v2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<description>Provides an example for a simple REST API implemented in Jetty.</description>
@@ -87,6 +87,54 @@
 				</executions>
 			</plugin>
 
+			<!-- For packaging project into WAR file -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<webResources>
+						<!-- To define the application display name -->
+						<resource>
+							<directory>src/main/webapp/WEB-INF</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>**/web.xml</include>
+							</includes>
+						</resource>
+						<!-- To show application details on index.jsp -->
+						<resource>
+							<directory>src/main/webapp</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>**/index.html</include>
+								<include>**/web.xml</include>
+							</includes>
+						</resource>
+						
+						<resource>
+							<directory>src/main/webapp/WEB-INF</directory>
+							<filtering>false</filtering>
+							<excludes>
+								<exclude>**/web.xml</exclude>
+							</excludes>
+						</resource>
+
+						<resource>
+							<directory>src/main/webapp</directory>
+							<filtering>false</filtering>
+							<excludes>
+								<exclude>**/index.html</exclude>
+								<exclude>**/web.xml</exclude>
+							</excludes>
+						</resource>
+					</webResources>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+			
+			<!-- For keeping source files with Maven artifact -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -100,7 +148,8 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			
+			<!-- For keeping JavaDoc files with Maven artifact -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -120,6 +169,7 @@
 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -160,14 +210,14 @@
 					<cnamePrefix>${project.artifactId}</cnamePrefix>
 					<environmentName>devenv</environmentName>
 					<environmentRef>devenv</environmentRef>
-					<solutionStack>64bit Amazon Linux 2015.03 v1.4.5 running Tomcat 8
-						Java 8</solutionStack>
+					<!-- IMPORTANT: No line break allowed for the following element -->
+					<solutionStack>64bit Amazon Linux 2015.03 v1.4.5 running Tomcat 8 Java 8</solutionStack>
 
 					<!-- Bucket name here equal to artifactId - but this is not guaranteed 
 						to be available, so therefore the bucket name is given statically -->
 					<s3Bucket>web-api-example-v2</s3Bucket>
-					<s3Key>${project.artifactId}/${project.build.finalName}-${maven.build.timestamp}.war</s3Key>
-					<versionLabel>${project.version}</versionLabel>
+					<s3Key>${project.artifactId}/${project.build.finalName}.war</s3Key>
+					<versionLabel>${project.version}-${maven.build.timestamp}</versionLabel> 
 				</configuration>
 			</plugin>
 
@@ -281,23 +331,7 @@
 					<include>**/versioninfo.txt</include>
 				</includes>
 			</resource>
-			<!-- To define the application display name -->
-			<resource>
-				<directory>src/main/webapp/WEB-INF</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>**/web.xml</include>
-				</includes>
-			</resource>
-			<!-- To show application details on index.jsp -->
-			<resource>
-				<directory>src/main/webapp</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>**/index.html</include>
-				</includes>
-			</resource>
-			
+
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>false</filtering>
@@ -305,6 +339,7 @@
 					<exclude>**/versioninfo.txt</exclude>
 				</excludes>
 			</resource>
+			
 		</resources>
 	</build>
 
