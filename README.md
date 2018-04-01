@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/mxro/web-api-example.svg?branch=master)](https://travis-ci.org/mxro/web-api-example)
+[![Build Status](https://travis-ci.org/mxro/web-api-example-v2.svg?branch=master)](https://travis-ci.org/mxro/web-api-example)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/mxro/web-api-example/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/mxro/web-api-example?targetFile=pom.xml)
+[![Known Vulnerabilities](https://snyk.io/test/github/mxro/web-api-example-v2/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/mxro/web-api-example?targetFile=pom.xml)
 
-# web-api-example
+# web-api-example-v2
 
 Provides an example for a simple server providing a REST API, implemented in Jetty.
 

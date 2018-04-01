@@ -4,10 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.mxro.webapiexample</groupId>
-	<artifactId>web-api-example</artifactId>
+	<artifactId>web-api-example-v2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
 	<description>Provides an example for a simple REST API implemented in Jetty.</description>
-	<url>https://github.com/mxro/web-api-example</url>
+	<url>https://github.com/mxro/web-api-example-v2</url>
 
 	<dependencies>
 		<!-- Jetty used as HTTP server -->
@@ -84,7 +86,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -147,6 +149,28 @@
 
 			</plugin>
 
+			<!-- For uploading project to Elastic Beanstalk -->
+<plugin>
+	<groupId>br.com.ingenieux</groupId>
+	<artifactId>beanstalk-maven-plugin</artifactId>
+	<version>1.5.0</version>
+	<configuration>
+		<applicationName>web-api-example-v2</applicationName>
+		<!-- Path of the deployed application: cnamePrefix.us-east-1.elasticbeanstalk.com -->
+		<cnamePrefix>${project.artifactId}</cnamePrefix>
+		<environmentName>devenv</environmentName>
+		<environmentRef>devenv</environmentRef>
+		<solutionStack>64bit Amazon Linux 2015.03 v1.4.5 running Tomcat 8 Java 8</solutionStack>
+
+		<!-- Bucket name here equal to artifactId - but this is not guaranteed 
+			to be available, so therefore the bucket name is given statically -->
+		<s3Bucket>web-api-example-v2</s3Bucket>
+		<s3Key>${project.artifactId}/${project.build.finalName}-${maven.build.timestamp}.war</s3Key>
+		<versionLabel>${project.version}</versionLabel>
+	</configuration>
+</plugin>
+
+			<!-- For generating the Maven site and project reports -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
@@ -256,17 +280,28 @@
 					<include>**/versioninfo.txt</include>
 				</includes>
 			</resource>
+			<!-- To define the application display name -->
 			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>false</filtering>
-				<excludes>
-					<exclude>**/versioninfo.txt</exclude>
-				</excludes>
+				<directory>src/main/webapp/WEB-INF</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/web.xml</include>
+				</includes>
 			</resource>
+			<!-- To show application details on index.jsp -->
+			<resource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/index.jsp</include>
+				</includes>
+			</resource>
+			<!-- <resource> <directory>src/main/resources</directory> <filtering>false</filtering> 
+				<excludes> <exclude>**/versioninfo.txt</exclude> </excludes> </resource> -->
 		</resources>
 	</build>
 
-	
+
 
 	<developers>
 		<developer>
@@ -285,10 +320,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:mxro/web-api-example.git</connection>
-		<url>https://github.com/mxro/web-api-example</url>
-		<developerConnection>scm:git:git@github.com:mxro/web-api-example.git
-		</developerConnection>
+		<connection>scm:git:git@github.com:mxro/web-api-example-v2.git</connection>
+		<url>https://github.com/mxro/web-api-example-v2</url>
+		<developerConnection>scm:git:git@github.com:mxro/web-api-example-v2.git</developerConnection>
 	</scm>
 
 	<licenses>

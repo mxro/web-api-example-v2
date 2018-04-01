@@ -11,7 +11,7 @@ public class WebApi {
 	
 	/**
 	 * This main method will be called upon running the executable jar assembled by the build.
-	 * @param args
+	 * @param args The arguments for starting this application
 	 */
 	public static void main(String[] args) {
 		int port = 8989;
