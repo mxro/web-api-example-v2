@@ -216,8 +216,8 @@
 					<!-- Bucket name here equal to artifactId - but this is not guaranteed 
 						to be available, so therefore the bucket name is given statically -->
 					<s3Bucket>web-api-example-v2</s3Bucket>
-					<s3Key>${project.artifactId}/${project.build.finalName}.war</s3Key>
-					<versionLabel>${project.version}-${maven.build.timestamp}</versionLabel> 
+					<s3Key>${project.artifactId}/${project.build.finalName}-${maven.build.timestamp}.war</s3Key>
+					<versionLabel>${project.version}</versionLabel> 
 				</configuration>
 			</plugin>
 

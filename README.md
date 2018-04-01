@@ -141,10 +141,12 @@ This project can easily be deployed to AWS Elastic Beanstalk.
 
 Simply configure your Maven settings file as described in step 1 and 2 in [this blog post](https://maxrohde.com/2018/04/01/upload-elastic-beanstalk-application-using-maven/).
 
-When the correct credentials have been supplied, you can trigger a deployment to Elastic Beanstalk with the following command:
+Also create a S3 bucket equal to the project id of this project (`web-api-example-v2`).
+
+You can now trigger a deployment to Elastic Beanstalk with the following command:
 
 ```
-mvn clean install beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
+mvn clean install beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:create-environment
 ```
 
 ## Dependency
