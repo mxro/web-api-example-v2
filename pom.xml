@@ -14,7 +14,7 @@
 	<properties>
         <!-- To supply password for GitHub Pages upload on travis-ci -->
         <github.global.server>github</github.global.server>
-        <github.global.username>${env.GITHUB_USERNAME}</github.global.username>
+        <github.global.userName>${env.GITHUB_USERNAME}</github.global.userName>
         <github.global.password>${env.GITHUB_PASSWORD}</github.global.password>
     </properties>
 	
