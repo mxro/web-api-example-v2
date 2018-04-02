@@ -6,7 +6,9 @@
 
 Provides an example for a simple server providing a REST API, implemented in Jetty.
 
-This server can be deployed as stand-alone Java application or as a WAR to a Tomcat/Jetty server.
+This server can be deployed as stand-alone Java application, as a WAR to a Tomcat/Jetty server or to AWS Elastic Beanstalk.
+
+The Maven site for this project is available here: [https://mxro.github.io/web-api-example-v2/](https://mxro.github.io/web-api-example-v2/). 
 
 ## About
 

@@ -10,7 +10,14 @@
 
 	<description>Provides an example for a simple REST API implemented in Jetty.</description>
 	<url>https://github.com/mxro/web-api-example-v2</url>
-
+	
+	<properties>
+        <!-- To supply password for GitHub Pages upload on travis-ci -->
+        <github.global.server>github</github.global.server>
+        <github.global.username>${env.GITHUB_USERNAME}</github.global.username>
+        <github.global.password>${env.GITHUB_PASSWORD}</github.global.password>
+    </properties>
+	
 	<dependencies>
 		<!-- Jetty used as HTTP server -->
 		<dependency>
@@ -220,16 +227,42 @@
 					<versionLabel>${project.version}</versionLabel>
 				</configuration>
 			</plugin>
-
+			
+			<!-- Deploy the web site -->
+			<plugin>
+				
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.12</version>
+				<configuration>
+					<server>github</server>
+					<message>Creating site for ${project.version}</message>
+					<merge>true</merge>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+						
+					</execution>
+				</executions>
+				
+			</plugin>
+			
 			<!-- For generating the Maven site and project reports -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.7</version>
 				<configuration>
-
+					 <!-- This is done by site-maven-plugin 
+					 <skipDeploy>true</skipDeploy>-->
 				</configuration>
 			</plugin>
+			
+			
 		</plugins>
 
 
