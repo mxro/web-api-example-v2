@@ -74,6 +74,8 @@ mvn site
 
 The reports and site will be available in the project directory `target/site`. Open `index.html` in this directory as a good starting point to explore the reports.
 
+Note: Do not deploy the `-distribution.jar` or `.war` file after `mvn site` has run. `mvn site` will add instrumentation to the generated classes. Instead, run `mvn install` before deploying files.
+
 ## Usage
 
 ### Command Line
